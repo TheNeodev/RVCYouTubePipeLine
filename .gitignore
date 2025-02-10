@@ -1,0 +1,5 @@
+*.bat
+*.wav
+venv
+outputs
+__pycache__

@@ -1,0 +1,7 @@
+numpy==1.23.5
+rvc-python
+audio-separator[gpu]
+yt-dlp
+pydub 
+gradio
+pedalboard
