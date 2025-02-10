@@ -1,6 +1,9 @@
 # Youtube to RVC song pipeline
 This projects aims to be a one stop shop to convert any song from youtube to a rvc song cover.
 
+Example:
+https://github.com/user-attachments/assets/4e7a18d9-5b88-4f4f-93a4-159ed11306e8
+
 ## Install
 Install torch <2.5 (audio-seperator)
 ``` 
