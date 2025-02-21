@@ -83,7 +83,7 @@ class Configs:
         return x_pad, x_query, x_center, x_max
 
 def get_model(voice_model):
-    model_dir = os.path.join(os.getcwd(), "models", voice_model)
+    model_dir = os.path.join(os.getcwd(), "rvc", voice_model)
     model_filename, index_filename = None, None
     for file in os.listdir(model_dir):
         ext = os.path.splitext(file)[1]
