@@ -5,4 +5,4 @@ yt-dlp
 pydub 
 gradio
 pedalboard
-https://github.com/TheNeodev/fairseq-fix/releases/download/fix/fairseq_fixed-0.13.0-cp311-cp311-linux_x86_64.whl
+
