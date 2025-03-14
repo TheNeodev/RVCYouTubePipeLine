@@ -18,21 +18,47 @@ def init(rvcmodel, rvcindex):
     dereverb = Separator()
     dereverb.load_model("dereverb_mel_band_roformer_anvuew_sdr_19.1729.ckpt")
 
-def ytdownload(url):
-    ydl_opts = {
-        "source_address": "0.0.0.0",
-        "outtmpl": "song.%(ext)s",
-        "format": "140",
-        # ℹ️ See help(yt_dlp.postprocessor) for a list of available Postprocessors and their arguments
-        "postprocessors": [
-            {  # Extract audio using ffmpeg
-                "key": "FFmpegExtractAudio",
-                "preferredcodec": "wav",
-            }
-        ],
-    }
-    with YoutubeDL(ydl_opts) as ydl:
-        ydl.download([url])
+
+def ytdownload(link):
+    if not link or not isinstance(link, str):
+        logging.error("Invalid link provided.")
+        return "Error: Invalid link"
+
+    try:
+        now_dir = os.getcwd()
+    except OSError as e:
+        logging.error(f"Error accessing current working directory: {e}")
+        return "Error: Unable to access current working directory"
+
+    output_dir = os.path.join(now_dir, "audio_files", "original_files")
+    os.makedirs(output_dir, exist_ok=True)
+
+    output_template = os.path.join(output_dir, "%(title)s.%(ext)s")
+
+    command = [
+        "yt-dlp",
+        "-x",
+        "--audio-format",
+        "wav",
+        "--output",
+        output_template,
+        "--cookies",
+        "./configs.txt",
+        link,
+    ]
+
+    try:
+        result = subprocess.run(command, check=True, capture_output=True, text=True)
+        logging.info(f"Download successful: {result.stdout}")
+        return "Music downloaded successfully"
+    except FileNotFoundError:
+        logging.error("yt-dlp is not installed. Please install it first.")
+        return "Error: yt-dlp not found"
+    except subprocess.CalledProcessError as e:
+        logging.error(f"Download failed: {e.stderr}")
+        return f"Error: {e.stderr}"
+
+
 
 def addEffects(input, output):
     # Make a Pedalboard object, containing multiple audio plugins:
