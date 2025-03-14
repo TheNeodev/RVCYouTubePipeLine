@@ -1,8 +1,8 @@
 numpy==1.23.5
 rvc-python
-audio-separator[gpu]
+audio-separator[gpu]==0.30.1
 yt-dlp
 pydub 
-gradio
+gradio==4.39.0
 pedalboard
 
