@@ -31,6 +31,3 @@ python3 webui.py
 - [x] basic pipeline in script
 - [x] fastapi endpoint
 - [x] gradio ui
-- [x] effects like reverb -> pedalboard
-    - [ ] improve effects and make them changeble in the webui
-- [ ] suno integration
